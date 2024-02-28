@@ -1,0 +1,44 @@
+body {
+    /* overflow: hidden; */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://t4.ftcdn.net/jpg/05/74/01/81/360_F_574018104_k2V59gKiqWUmAYd1d7sSVzanIpWu2f3v.jpg');
+    background-size: 100% 100%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.wrapper {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    color: white;
+    font-weight: bolder;
+}
+
+.wrapper #score {
+    margin-bottom: 1rem;
+}
+
+canvas {
+    border: 2px solid black;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.image {
+    display: flex;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    gap: 1rem;
+}
+
+.image img {
+    border-radius: 10px;
+    width: 3rem;
+    height: 3rem;
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            outline: none;
+            border: none;
+            font-family: "Pixelify Sans", sans-serif;
+        }
+
+        img {
+            width: 4rem;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            padding: 50px;
+            border-radius: 10px;
+            color: white;
+            width: 30rem;
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .container h1 {
+            font-family: "Pixelify Sans", sans-serif;
+            font-size: 3rem;
+        }
+
+        .container ul {
+            margin-top: 1rem;
+        }
+
+        .container li {
+            text-align: left;
+            font-weight: normal;
+            font-size: .8rem;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .action {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #main {
+            display: block;
+            animation: fadeShow 0.5s ease-in-out;
+        }
+
+
+        #leaderboard {
+            animation: fadeShow 0.5s ease-in-out;
+            display: none;
+        }
+
+        @keyframes fadeShow {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 100;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        th {
+            text-align: center;
+            font-weight: normal;
+        }
+
+        thead th {
+            background-color: #D31921;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        tbody td {
+            position: relative;
+        }
+
+        tbody td:hover:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+        }
+
+        #close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        img {
+            border-radius: 10px;
+            box-shadow: 3px 3px 20px 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .loading {
+            display: grid;
+            place-content: center;
+            height: 100vh;
+            width: 100vw;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 99999;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="container" id="leaderboard">
+            <span id="close">
+                <?xml version="1.0" encoding="utf-8"?>
+                <!-- License: MIT. Made by michaelampr: https://github.com/michaelampr/jam -->
+                <svg fill="#fff" width="40" height="40" viewBox="-6 -6 24 24" xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMinYMin" class="jam jam-close">
+                    <path
+                        d='M7.314 5.9l3.535-3.536A1 1 0 1 0 9.435.95L5.899 4.485 2.364.95A1 1 0 1 0 .95 2.364l3.535 3.535L.95 9.435a1 1 0 1 0 1.414 1.414l3.535-3.535 3.536 3.535a1 1 0 1 0 1.414-1.414L7.314 5.899z' />
+                </svg>
+            </span>
+            <img src="assets/UBIG HD.png" alt="">
+            <h1>Scoreboard</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Highest Score</th>
+                    </tr>
+                </thead>
+                <tbody id="rank">
+                    <tr>
+                        <td id="highestScore"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container" id="main">
+            <img src="assets/UBIG HD.png" alt="">
+            <h1>Tetris UBIG</h1>
+            <ul>
+                <li>
+                    Tujuan: Isi baris horizontal dengan potongan Tetromino tanpa mencapai batas atas arena. Dapatkan
+                    skor
+                    dengan menghapus
+                    baris.
+                </li>
+
+                <li>
+                    Kontrol: Gunakan panah untuk menggerakkan, spasi untuk menjatuhkan cepat, dan tombol lain untuk
+                    memutar
+                    atau menukar
+                    Tetromino.
+                </li>
+                <li>
+                    Kalah: Anda kalah jika Tetromino tidak dapat diposisikan secara legal di arena.
+                </li>
+            </ul>
+            <div class="action">
+                <button id="buttonLeader">Leader Board</button>
+                <a href="game.html"><button>Play Game</button></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        document.getElementById('buttonLeader').addEventListener('click', e => {
+            document.getElementById('main').style.display = 'none'
+            document.getElementById('leaderboard').style.display = 'block'
+
+            document.getElementById('highestScore').innerHTML = JSON.parse(localStorage.getItem('highest_scores'))[JSON.parse(localStorage.getItem('highest_scores')).lenth - 1]['score']
+
+
+        })
+        document.getElementById('close').addEventListener('click', e => {
+            document.getElementById('main').style.display = 'block'
+            document.getElementById('leaderboard').style.display = 'none'
+        })
+    </script>
+</body>
+
+</html>
